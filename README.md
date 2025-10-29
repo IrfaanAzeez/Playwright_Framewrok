@@ -5,7 +5,6 @@
 - Cucumber (Gherkin) feature and step definitions
 - Utilities: browser, DB, Excel, reporter, wait
 - Config/environment file
-- Sample login scenario
 
 ## Run locally
 1. `cd playwright-bdd-framework`
