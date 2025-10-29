@@ -16,6 +16,14 @@ class LoginPage {
     this.middleNameCheckbox = page.locator('input[id="MiddleChxBox"]');
     this.loginButton = page.locator('input[id="SubmitSignInBtn"]');
     this.createButton = page.locator('input[id="CreateBtn"]');
+    this.schoolInput = page.locator('input[name="SchoolId_input"]');
+    this.selectProgramDropDown = page.locator('//span[text()="Select Program"]');
+    this.selectProgramDropDownList = page.locator('//ul[@id="SchoolProgramId_listbox"]//li[@role="option"]');
+    this.backgroundCheckBox = page.locator('input[title="Background Check"]');
+    this.drugTestCheckBox = page.locator('input[title="Drug Test"]');
+    this.ImmunizationCheckBox = page.locator('input[title="Immunization"]');
+    this.startApplicationButton = page.locator('input[value="Start Application"]');
+
   }
 
   async navigate(url) {
@@ -56,16 +64,44 @@ class LoginPage {
       //await this.middleNameCheckbox.check();
       await this.MiddleNameInput.fill(mname);
       await this.LastNameInput.fill(lname)
-      await this.EmailInput.fill(`Test${randomNum}@gmail.com`);
-      await this.ConfirmEmailInput.fill(`Test${randomNum}@gmail.com`);
+      await this.EmailInput.fill(`${fname}${randomNum}@gmail.com`);
+      await this.ConfirmEmailInput.fill(`${fname}${randomNum}@gmail.com`);
       await this.createPasswordInput.fill(password);
       await this.confirmPasswordInput.fill(password);
       await this.healthEnrollmentCheckbox.uncheck();
       await this.createButton.click();
       console.log('Create new student record attempt complete');
-      await this.page.waitForTimeout(10000); // Wait for 10 seconds to observe the result
+      await this.page.waitForTimeout(5000); // Wait for 10 seconds to observe the result
     } catch (error) {
       console.error('Creating new student record failed:', error);
+      throw error;
+    }
+  }
+  
+  async addSchoolDetails(schoolName){
+    console.log('Attempting to add school details');
+    try {
+      await this.schoolInput.waitFor({ state: 'visible', timeout: 10000 });
+      await this.schoolInput.fill(schoolName);
+      await this.page.waitForTimeout(1000); // Wait for suggestions to load
+      await this.page.keyboard.press('Enter');
+      await this.selectProgramDropDown.click();
+      for (let i = 0; i < await this.selectProgramDropDownList.count(); i++) {
+        const option = this.selectProgramDropDownList.nth(i);
+        const optionText = await option.textContent();
+        if (optionText.trim() === 'LVN') {    
+          await option.click();
+          break;
+        }
+      }
+      await this.backgroundCheckBox.check();
+      await this.drugTestCheckBox.check();
+      await this.ImmunizationCheckBox.check();
+      await this.startApplicationButton.click();
+      await this.page.waitForTimeout(10000);
+      console.log('Add school details attempt complete');
+    } catch (error) {
+      console.error('Adding school details failed:', error);
       throw error;
     }
   }

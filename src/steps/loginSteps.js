@@ -24,6 +24,7 @@ When('I Create new Student account with needed details', async function () {
     config.Email,
     config.Password
   );
+  await loginPage.addSchoolDetails('Zee');
 });
 
 // Then('I should see the dashboard', async function () {
