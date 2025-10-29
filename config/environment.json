@@ -1,0 +1,19 @@
+{
+  "dev": {
+    "baseUrl": "https://staging.precheck.com/User/UserRegistration",
+    "username": "testtest99@gmail.com",
+    "password": "Precheck2025",
+    "db": {
+      "host": "localhost",
+      "port": 3306,
+      "user": "db_user",
+      "password": "db_pass",
+      "database": "testdb"
+    },
+    "FirstName": "John",
+    "MiddleName": "M",
+    "LastName": "Doe",
+    "Email": "test12345@gmail.com",
+    "Password": "Test1234"
+  }
+}

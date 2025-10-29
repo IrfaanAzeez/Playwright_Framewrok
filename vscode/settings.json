@@ -1,0 +1,33 @@
+{
+  // Folder where your feature files are
+  "cucumberjs.features": "features/**/*.feature",
+
+  // Folder where your step definitions are
+  "cucumberjs.steps": "src/steps/**/*.js",
+
+  // Cucumber command (use npx to ensure local version is used)
+  "cucumberjs.command": "npx cucumber-js",
+
+  // Optional: environment variables for your tests
+  "cucumberjs.env": {
+    "NODE_ENV": "test",
+    "HEADLESS": "false",
+    "ENV": "dev"
+  },
+
+  "cucumberjs.args": [
+  "--require", "src/world/world.js",
+  "--require", "src/hooks/hooks.js",
+  "--require", "src/steps/**/*.js",
+  "--format", "./allure-config.js"
+],
+
+  // Optional: enable autocomplete for steps in .feature files
+  "cucumberautocomplete.steps": [
+    "src/steps/*.js"
+  ],
+  "cucumberautocomplete.syncfeatures": "features/*.feature",
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "cucumberautocomplete.smartSnippets": true,
+  "cucumberautocomplete.gherkinDefinitionPart": "@(Given|When|Then)\\("
+}

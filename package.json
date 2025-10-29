@@ -1,0 +1,21 @@
+{
+  "name": "playwright-bdd-framework",
+  "version": "1.0.0",
+  "description": "Playwright + Cucumber (BDD) + Allure per-scenario reporting",
+  "scripts": {
+    "test": "node runTestsWithAllure.js",
+    "allure:generate": "npx allure generate ./reports/allure-results --clean -o ./reports/html",
+    "allure:open": "npx allure open ./reports/html",
+    "test:allure": "node runTestsWithAllure.js"
+  },
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.2.0",
+    "allure-commandline": "^2.34.1",
+    "allure-js-commons": "^2.15.1",
+    "cross-spawn": "^7.0.3",
+    "playwright": "^1.56.1"
+  },
+  "engines": {
+    "node": ">=16"
+  }
+}
