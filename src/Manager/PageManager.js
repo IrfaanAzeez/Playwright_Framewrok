@@ -1,11 +1,10 @@
 const { LoginPage } = require('../pages/LoginPage');
-const { DashboardPage } = require('../pages/DashboardPage');
-
+const { ConsentPage  } = require('../pages/ConsentPage');
 class PageManager {
   constructor(page) {
     this.page = page;
     this.loginPage = new LoginPage(page);
-    this.dashboardPage = new DashboardPage(page);
+    this.consentPage = new ConsentPage(page);
   }
 }
 

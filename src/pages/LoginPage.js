@@ -17,12 +17,13 @@ class LoginPage {
     this.loginButton = page.locator('input[id="SubmitSignInBtn"]');
     this.createButton = page.locator('input[id="CreateBtn"]');
     this.schoolInput = page.locator('input[name="SchoolId_input"]');
-    this.selectProgramDropDown = page.locator('//span[text()="Select Program"]');
+    this.selectProgramDropDown = page.locator('//span[@role="listbox"]//span[@class="k-dropdown-wrap k-state-default"]');
     this.selectProgramDropDownList = page.locator('//ul[@id="SchoolProgramId_listbox"]//li[@role="option"]');
     this.backgroundCheckBox = page.locator('input[title="Background Check"]');
     this.drugTestCheckBox = page.locator('input[title="Drug Test"]');
     this.ImmunizationCheckBox = page.locator('input[title="Immunization"]');
     this.startApplicationButton = page.locator('input[value="Start Application"]');
+
 
   }
 
@@ -86,6 +87,7 @@ class LoginPage {
       await this.page.waitForTimeout(1000); // Wait for suggestions to load
       await this.page.keyboard.press('Enter');
       await this.selectProgramDropDown.click();
+      await this.page.waitForTimeout(3000);
       for (let i = 0; i < await this.selectProgramDropDownList.count(); i++) {
         const option = this.selectProgramDropDownList.nth(i);
         const optionText = await option.textContent();
@@ -94,11 +96,12 @@ class LoginPage {
           break;
         }
       }
+
       await this.backgroundCheckBox.check();
       await this.drugTestCheckBox.check();
       await this.ImmunizationCheckBox.check();
       await this.startApplicationButton.click();
-      await this.page.waitForTimeout(10000);
+      await this.page.waitForTimeout(3000);
       console.log('Add school details attempt complete');
     } catch (error) {
       console.error('Adding school details failed:', error);
