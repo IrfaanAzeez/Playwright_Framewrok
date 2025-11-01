@@ -44,6 +44,8 @@ Then('I should fill the personal details', async function () {
   await this.page.waitForTimeout(5000);
   console.log('Filling personal details now');
   await consentPage.fillPersonalDetails("7571234567", "testtest99@gmail.com","123-45-6789");
+  await consentPage.addNewName("Test","Test");
+  await consentPage.addNewResidence("123 Main St Apt 4B","New York","NY","10001","USA");
 });
 
 // Then('I should see the dashboard', async function () {
