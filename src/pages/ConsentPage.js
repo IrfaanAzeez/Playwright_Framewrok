@@ -63,27 +63,7 @@ class ConsentPage {
     this.nameFirstName = page.locator('//input[@id="FirstName"]');
     this.nameLastName = page.locator('//input[@id="LastName"]');
     this.nameSaveBtn = page.locator('//a[normalize-space()="Save"]');
-    this.AddNewResidencefield = page.locator('//button[contains(text(),"Add New Residence")]');
-    this.ResidenceAddressInput = page.locator('//textarea[@id="Address"]');
-    this.ResidenceCityInput = page.locator('//input[@id="City"]');
-    this.ResidenceZipInput = page.locator('//input[@id="Zip"]');
-    this.ResidenceStateDropDown = page.locator('//span[@aria-controls="State_listbox"]');
-    this.ResidenceStateList = page.locator('//ul[@id="State_listbox"]//li');
-    this.ResidenceCntryDrpDwn = page.locator('//span[@aria-controls="Country_listbox"]');
-    this.ResidenceCntryList = page.locator('//ul[@id="Country_listbox"]//li');
     
-    this.ResidenceDFMnthDrpDwn = page.locator('//label[text()="Date From"]//parent::div//span[contains(@aria-owns,"SelectedMonth_listbox")]//span[@aria-label="select"]');
-    this.ResidenceDFMnthList = page.locator('//ul[contains(@id,"bcbadbca_SelectedMonth_listbox")]//li');
-    this.ResidenceDFYearDrpSwn = page.locator('//label[text()="Date From"]//parent::div//span[contains(@class,"Yeardrdown")]//span[@aria-label="select"]');
-    this.ResidenceDFYearList = page.locator('//ul[contains(@id,"bcbadbca_SelectedYear_listbox")]//li');
-
-    this.ResidenceDTMnthDrpDwn = page.locator('//label[text()="Date To"]//parent::div//span[contains(@aria-owns,"SelectedMonth_listbox")]//span[@aria-label="select"]');
-    this.ResidenceDTMnthList = page.locator('//ul[contains(@id,"ceedbbbc_SelectedMonth_listbox")]//li');
-    this.ResidenceDTYearDrpDwn = page.locator('//label[text()="Date To"]//parent::div//span[contains(@class,"Yeardrdown")]//span[@aria-label="select"]');
-    this.ResidenceDTYearList = page.locator('//ul[contains(@id,"ceedbbbc_SelectedYear_listbox")]//li');
-    this.ResidenceMailAdrsCB = page.locator('//div[@id="IsMailingAddressDiv"]//label[contains(@class,"checkbox")]');
-    this.ResidenceCrntAdrsCB = page.locator('//div[@id="IsCurrentDiv"]//label[contains(@class,"checkbox")]');
-    this.ResidenceSaveBtn = page.locator('//a[normalize-space()="Save"]');
   }
 
   async submitConsent(fname) {
@@ -252,80 +232,7 @@ class ConsentPage {
     }
   } 
 
-  async addNewResidence(address, city, state, zip, country) {  //"123 Main St Apt 4B","New York","NY","10001","USA"
-    console.log("Attempting to add new residence");
-    try {
-      await this.AddNewResidencefield.waitFor({ state: "visible", timeout: 10000 });
-      await this.AddNewResidencefield.click();
-      await this.ResidenceAddressInput.fill(address);
-      await this.ResidenceCityInput.fill(city);
-      // Select State
-      await this.ResidenceStateDropDown.click();
-      for (let i = 0; i < (await this.ResidenceStateList.count()); i++) {
-        const option = this.ResidenceStateList.nth(i);
-        const optionText = await option.textContent();
-        if (optionText.trim() === state) {
-          await option.click();
-          break;
-        }
-      }
-      await this.ResidenceZipInput.fill(zip);
-      // Select Country as USA
-      await this.ResidenceCntryDrpDwn.click();
-      for (let i = 0; i < (await this.ResidenceCntryList.count()); i++) {
-        const option = this.ResidenceCntryList.nth(i);
-        const optionText = await option.textContent();
-        if (optionText.trim() === country) {
-          await option.click();
-          break;
-        }
-      }
-      // Select Date From Month      
-      await this.page.ResidenceDFMnthDrpDwn.click();
-      for (let i = 0; i < (await this.ResidenceDFMnthList.count()); i++) {
-        const option = this.ResidenceDFMnthList.nth(i);
-        const optionText = await option.textContent();
-        if (optionText.trim() === "Mar") {
-          await option.click();
-          break;
-        }
-      }
-      await this.ResidenceDFYearDrpSwn.click();
-      for (let i = 0; i < (await this.ResidenceDFYearList.count()); i++) {
-        const option = this.ResidenceDFYearList.nth(i);
-        const optionText = await option.textContent();
-        if (optionText.trim() == 2020) {
-          await option.click();
-          break;
-        }
-      }
-      await this.ResidenceDTMnthDrpDwn.click();
-      for (let i = 0; i < (await this.ResidenceDTMnthList.count()); i++) {
-        const option = this.ResidenceDTMnthList.nth(i);
-        const optionText = await option.textContent();
-        if (optionText.trim() === "Jun") {
-          await option.click();
-          break;
-        }
-      }
-      await this.ResidenceDTYearDrpDwn.click();
-      for (let i = 0; i < (await this.ResidenceDTYearList.count()); i++) {
-        const option = this.ResidenceDTYearList.nth(i);
-        const optionText = await option.textContent();
-        if (optionText.trim() == 2023) {
-          await option.click();
-          break;
-        }
-      }
-      await this.ResidenceMailAdrsCB.click();
-      await this.ResidenceCrntAdrsCB.click(); 
-      await this.ResidenceSaveBtn.click();
-      await this.page.waitForTimeout(3000);
-    } catch (error) {
-      console.error("Adding new residence failed:", error);
-      throw error;
-    }
-  }
+  
 }
 
 module.exports = { ConsentPage };

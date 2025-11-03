@@ -7,3 +7,5 @@ Feature: Login to application
     #And I Create new Student account with needed details
     Then I should provide consent signature
     And I should fill the personal details
+    Then I shoud fill the Residence details
+    And I should add the criminal records
