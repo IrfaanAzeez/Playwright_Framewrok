@@ -89,6 +89,7 @@ class ConsentPage {
         timeout: 10000,
       });
       await this.personalPhoneInput.fill(phone);
+      await this.page.waitForTimeout(1000);
       // Select DOB Month
       await this.personalDOBMonthDropDown.click();
       for (let i = 0; i < (await this.personalDOBMonthList.count()); i++) {

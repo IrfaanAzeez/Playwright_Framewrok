@@ -1,7 +1,7 @@
 const { LoginPage } = require('../pages/LoginPage');
 const { ConsentPage  } = require('../pages/ConsentPage');
 const { ResidencePage  } = require('../pages/ResidencePage');
-const { EmploymentPage } = require('../pages/EmploymentPage');
+const { EmploymentPage } = require('../pages/EmploymentPage'); //EmploymentPage.js
 
 class PageManager {
   constructor(page) {

@@ -3,7 +3,8 @@ const { LoginPage } = require('../pages/LoginPage');
 const { dev: config } = require('../../config/environment.json');
 const { ConsentPage } = require('../pages/ConsentPage');
 const { ResidencePage } = require('../pages/ResidencePage');
-const {EmploymentPage} = require('../pages/EmploymentPage');
+const { EmploymentPage } = require('../pages/EmploymentPage');
+
 let loginPage;
 let consentPage;
 let residencePage;
@@ -62,5 +63,12 @@ When('I should add the criminal records', async function () {
   await this.page.waitForTimeout(3000);
   console.log('Adding Criminal Record details now');
   await residencePage.addCriminalRecord("Theft","New York","NY","Bufor");
+});
+
+Then('I should add the Employment details', async function () {
+  employmentPage = new EmploymentPage(this.page);
+  await this.page.waitForTimeout(3000);
+  console.log('Adding Employment details now');
+  await employmentPage.addNewEmployment();
 });
 
