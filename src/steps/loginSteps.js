@@ -1,14 +1,16 @@
-const { Given, When, Then } = require('@cucumber/cucumber');
+const { Given, When, Then,} = require('@cucumber/cucumber');
 const { LoginPage } = require('../pages/LoginPage');
 const { dev: config } = require('../../config/environment.json');
 const { ConsentPage } = require('../pages/ConsentPage');
 const { ResidencePage } = require('../pages/ResidencePage');
 const { EmploymentPage } = require('../pages/EmploymentPage');
+const { EducationPage } = require('../pages/EducationPage');
 
 let loginPage;
 let consentPage;
 let residencePage;
 let employmentPage;
+let educationPage;
 
 Given('I launch the browser', async function () {
   loginPage = new LoginPage(this.page);
@@ -70,5 +72,12 @@ Then('I should add the Employment details', async function () {
   await this.page.waitForTimeout(3000);
   console.log('Adding Employment details now');
   await employmentPage.addNewEmployment();
+});
+
+Then ('I should add the Eduction details', async function () {
+  educationPage = new EducationPage(this.page);
+  await this.page.waitForTimeout(3000);
+  console.log('Adding Education details now');
+  await educationPage.addNewEducation();
 });
 

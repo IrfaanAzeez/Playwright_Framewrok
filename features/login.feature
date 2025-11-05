@@ -10,3 +10,4 @@ Feature: Login to application
     Then I shoud fill the Residence details
     And I should add the criminal records
     Then I should add the Employment details
+    And I should add the Eduction details
