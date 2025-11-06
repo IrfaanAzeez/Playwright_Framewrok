@@ -31,6 +31,7 @@ class EducationPage {
       await this.AddNewEdufield.waitFor({ state: "visible", timeout: 10000 });
       await this.AddNewEdufield.click();
         // Select Education Level
+        await this.page.waitForTimeout(2000);
         await this.Edu_EduLevelDrpDwn.click();
         await this.page.waitForTimeout(2000);
         for (let i = 0; i < (await this.Edu_EduLevelDrpDwnList.count()); i++) {
@@ -97,8 +98,8 @@ class EducationPage {
         await this.Edu_graduationSelect.selectOption("true");
         await this.page.waitForTimeout(2000);
         // Select Graduation Month
-        await this.Edu_graduationMonthSelect.selectOption("5");
-        await this.page.waitForTimeout(2000);
+        // await this.Edu_graduationMonthSelect.selectOption("5");
+        // await this.page.waitForTimeout(2000);
         await this.Edu_graduationYear.fill("2022");
         await this.page.waitForTimeout(2000);
         // Click Save Button

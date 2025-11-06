@@ -11,3 +11,5 @@ Feature: Login to application
     And I should add the criminal records
     Then I should add the Employment details
     And I should add the Eduction details
+    Then I should add the License details
+    Then I should sign the Authorization page

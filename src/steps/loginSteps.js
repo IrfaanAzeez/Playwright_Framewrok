@@ -5,12 +5,16 @@ const { ConsentPage } = require('../pages/ConsentPage');
 const { ResidencePage } = require('../pages/ResidencePage');
 const { EmploymentPage } = require('../pages/EmploymentPage');
 const { EducationPage } = require('../pages/EducationPage');
+const { LicencePage } = require('../pages/LicencePage');
+const {PersonalPage} = require('../pages/PersonalPage');
 
 let loginPage;
 let consentPage;
 let residencePage;
 let employmentPage;
 let educationPage;
+let licencePage;
+let personalPage;
 
 Given('I launch the browser', async function () {
   loginPage = new LoginPage(this.page);
@@ -48,10 +52,11 @@ Then('I should provide consent signature', async function () {
 });
 
 Then('I should fill the personal details', async function () {
+  personalPage = new PersonalPage(this.page);
   await this.page.waitForTimeout(3000);
   console.log('Filling personal details now');
-  await consentPage.fillPersonalDetails("7571234567", "testtest99@gmail.com","123-45-6789");
-  await consentPage.addNewName("Test","Test");
+  await personalPage.fillPersonalDetails("7571234567", "testtest99@gmail.com","123-45-6789");
+  await personalPage.addNewName("Test","Test");
 });
 
 Then('I shoud fill the Residence details', async function () {
@@ -79,5 +84,20 @@ Then ('I should add the Eduction details', async function () {
   await this.page.waitForTimeout(3000);
   console.log('Adding Education details now');
   await educationPage.addNewEducation();
+});
+
+Then ('I should add the License details', async function () {
+  licencePage = new LicencePage(this.page);
+  await this.page.waitForTimeout(3000);
+  console.log('Adding License details now');
+  await licencePage.addNewLicense();
+});
+
+Then ('I should sign the Authorization page', async function () {
+  await this.page.waitForTimeout(3000);
+  consentPage = new ConsentPage(this.page, this.context);
+  console.log('Signing Authorization page now');
+  await consentPage.submitAuthorization();
+  await consentPage.submitReviewAndSubmit();
 });
 

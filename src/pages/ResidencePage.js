@@ -43,6 +43,7 @@ class ResidencePage {
     try {
       await this.AddNewResidencefield.waitFor({ state: "visible", timeout: 10000 });
       await this.AddNewResidencefield.click();
+      await this.page.waitForTimeout(2000);
       await this.ResidenceAddressInput.fill(address);
       await this.ResidenceCityInput.fill(city);
       // Select State
