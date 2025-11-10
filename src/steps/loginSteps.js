@@ -7,6 +7,7 @@ const { EmploymentPage } = require('../pages/EmploymentPage');
 const { EducationPage } = require('../pages/EducationPage');
 const { LicencePage } = require('../pages/LicencePage');
 const {PersonalPage} = require('../pages/PersonalPage');
+const { DrugTestPage } = require('../pages/DrugTestPage');
 
 let loginPage;
 let consentPage;
@@ -15,6 +16,7 @@ let employmentPage;
 let educationPage;
 let licencePage;
 let personalPage;
+let drugTestPage;
 
 Given('I launch the browser', async function () {
   loginPage = new LoginPage(this.page);
@@ -55,7 +57,7 @@ Then('I should fill the personal details', async function () {
   personalPage = new PersonalPage(this.page);
   await this.page.waitForTimeout(3000);
   console.log('Filling personal details now');
-  await personalPage.fillPersonalDetails("7571234567", "testtest99@gmail.com","123-45-6789");
+  await personalPage.fillPersonalDetails("7571234567", "testtest99@gmail.com","489-36-8350");
   await personalPage.addNewName("Test","Test");
 });
 
@@ -99,5 +101,12 @@ Then ('I should sign the Authorization page', async function () {
   console.log('Signing Authorization page now');
   await consentPage.submitAuthorization();
   await consentPage.submitReviewAndSubmit();
+});
+
+Then ('I should be able to schedule the Drug Test', async function () {
+  drugTestPage = new DrugTestPage(this.page, this.context);
+  await this.page.waitForTimeout(3000);
+  console.log('Scheduling Drug Test now');
+  await drugTestPage.scheduleDrugTest("489-36-8350");
 });
 

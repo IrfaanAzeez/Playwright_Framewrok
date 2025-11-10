@@ -89,7 +89,7 @@ class PersonalPage {
       for (let i = 0; i < (await this.personalDOBDayList.count()); i++) {
         const option = this.personalDOBDayList.nth(i);
         const optionText = await option.textContent();
-        if (optionText.trim() == 5) {
+        if (optionText.trim() == 10) {
           await option.click();
           break;
         }
@@ -100,7 +100,7 @@ class PersonalPage {
       for (let i = 0; i < (await this.personalDOBYearList.count()); i++) {
         const option = this.personalDOBYearList.nth(i);
         const optionText = await option.textContent();
-        if (optionText.trim() == "2000") {
+        if (optionText.trim() == "1993") {
           await option.click();
           break;
         }
@@ -128,7 +128,7 @@ class PersonalPage {
       for (let i = 0; i < (await this.personalConfirmDOBDayList.count()); i++) {
         const option = this.personalConfirmDOBDayList.nth(i);
         const optionText = await option.textContent();
-        if (optionText.trim() == 5) {
+        if (optionText.trim() == 10) {
           await option.click();
           break;
         }
@@ -143,7 +143,7 @@ class PersonalPage {
       ) {
         const option = this.personalConfirmDOBYearList.nth(i);
         const optionText = await option.textContent();
-        if (optionText.trim() == "2000") {
+        if (optionText.trim() == "1993") {
           await option.click();
           break;
         }

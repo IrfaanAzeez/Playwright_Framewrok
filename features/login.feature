@@ -13,3 +13,4 @@ Feature: Login to application
     And I should add the Eduction details
     Then I should add the License details
     Then I should sign the Authorization page
+    And I should be able to schedule the Drug Test

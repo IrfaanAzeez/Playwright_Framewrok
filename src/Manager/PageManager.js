@@ -5,6 +5,7 @@ const { EmploymentPage } = require('../pages/EmploymentPage');
 const {EducationPage} = require('../pages/EducationPage');
 const { LicencePage } = require('../pages/LicencePage');
 const {PersonalPage} = require('../pages/PersonalPage');
+const { DrugTestPage } = require('../pages/DrugTestPage');
 
 
 class PageManager {
@@ -17,6 +18,7 @@ class PageManager {
     this.educationPage = new EducationPage(page);
     this.licencePage = new LicencePage(page);
     this.personalPage = new PersonalPage(page);
+    this.drugTestPage = new DrugTestPage(page);
   }
 }
 
