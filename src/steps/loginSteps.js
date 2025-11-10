@@ -50,15 +50,15 @@ Then('I should provide consent signature', async function () {
   await consentPage.submitConsent("test");
   await consentPage.submitConsent("test");
   await consentPage.submitConsent("test");
-  await consentPage.submitConsent("test");
+  //await consentPage.submitConsent("test");
 });
 
 Then('I should fill the personal details', async function () {
   personalPage = new PersonalPage(this.page);
   await this.page.waitForTimeout(3000);
   console.log('Filling personal details now');
-  await personalPage.fillPersonalDetails("7571234567", "testtest99@gmail.com","489-36-8350");
-  await personalPage.addNewName("Test","Test");
+  await personalPage.fillPersonalDetails("7571234567", "testtest99@gmail.com","489368350");
+  //await personalPage.addNewName("Test","Test");
 });
 
 Then('I shoud fill the Residence details', async function () {
@@ -99,14 +99,16 @@ Then ('I should sign the Authorization page', async function () {
   await this.page.waitForTimeout(3000);
   consentPage = new ConsentPage(this.page, this.context);
   console.log('Signing Authorization page now');
-  await consentPage.submitAuthorization();
+  //await consentPage.submitAuthorization();
   await consentPage.submitReviewAndSubmit();
 });
 
 Then ('I should be able to schedule the Drug Test', async function () {
   drugTestPage = new DrugTestPage(this.page, this.context);
+  consentPage = new ConsentPage(this.page, this.context);
   await this.page.waitForTimeout(3000);
   console.log('Scheduling Drug Test now');
-  await drugTestPage.scheduleDrugTest("489-36-8350");
+  await drugTestPage.scheduleDrugTest("489368350");
+  await consentPage.confirmOrder();
 });
 

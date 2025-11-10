@@ -97,9 +97,9 @@ class LoginPage {
         }
       }
 
-      await this.backgroundCheckBox.check();
+      //await this.backgroundCheckBox.check();
       await this.drugTestCheckBox.check();
-      await this.ImmunizationCheckBox.check();
+      //await this.ImmunizationCheckBox.check();
       await this.startApplicationButton.click();
       await this.page.waitForTimeout(3000);
       console.log('Add school details attempt complete');

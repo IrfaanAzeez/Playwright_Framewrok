@@ -154,7 +154,8 @@ class PersonalPage {
       await this.personalConfirmSSNInput.fill(ssn);
       console.log("email, ssn filled");
       try {
-        //if (this.personalImmStID.isVisible() === true) {
+        await this.personalImmStID.waitFor({state: "visible", timeout: 10000,});
+        if (this.personalImmStID.isVisible()) {
           await this.personalImmStID.waitFor({state: "visible", timeout: 10000,});
           //await this.page.waitForTimeout(2000);
           await this.personalImmStID.fill("123456");
@@ -186,7 +187,10 @@ class PersonalPage {
               break;
             }
           }
-        //}
+        }
+        else {
+          console.log("Student ID section not visible, skipping...");
+        }
       } catch (e) {
         console.log("Student ID section not visible, skipping...", e);
       }

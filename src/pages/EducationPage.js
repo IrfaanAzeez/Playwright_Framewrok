@@ -98,8 +98,8 @@ class EducationPage {
         await this.Edu_graduationSelect.selectOption("true");
         await this.page.waitForTimeout(2000);
         // Select Graduation Month
-        // await this.Edu_graduationMonthSelect.selectOption("5");
-        // await this.page.waitForTimeout(2000);
+        await this.Edu_graduationMonthSelect.selectOption("5");
+        await this.page.waitForTimeout(2000);
         await this.Edu_graduationYear.fill("2022");
         await this.page.waitForTimeout(2000);
         // Click Save Button

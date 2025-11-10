@@ -11,6 +11,7 @@ class ConsentPage {
     this.AuthSignature = page.locator('canvas[id="SignatureCanvas"]');
     //Review Submit locator
     this.ReviewSubmitBtn = page.locator('a[id="navBottomNextBtn"]');
+    this.NextButton = page.locator('input[id="navNextBtn"]');
     
   }
 
@@ -67,6 +68,21 @@ class ConsentPage {
       await this.page.waitForTimeout(3000);
     } catch (error) {
       console.error("Submit review and submit failed:", error);
+      throw error;
+    }
+  }
+
+  async confirmOrder() {  
+    console.log("Attempting to confirm order");
+    try {
+      // Assuming there's a confirmation button after review and submit
+      await this.NextButton.waitFor({ state: "visible", timeout: 60000 });
+      await NextButton.click();
+      await this.page.screenshot({ path: "OrderConfirmation.png", fullPage: true });
+      await this.page.waitForTimeout(5000);
+      
+    } catch (error) {
+      console.error("Confirming order failed:", error);
       throw error;
     }
   }
