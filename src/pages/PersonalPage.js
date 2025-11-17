@@ -69,6 +69,7 @@ class PersonalPage {
         state: "visible",
         timeout: 10000,
       });
+      await this.personalPhoneInput.click();
       await this.page.waitForTimeout(2000);
       await this.personalPhoneInput.fill("4567891230");
       await this.page.waitForTimeout(1000);
@@ -149,8 +150,11 @@ class PersonalPage {
         }
       }
       console.log("Confirm DOB Year selected");
+      await this.personalconfirmEmailInput.click();
       await this.personalconfirmEmailInput.fill(email);
+      await this.personalSSNInput.click();
       await this.personalSSNInput.fill(ssn);
+      await this.personalConfirmSSNInput.click();
       await this.personalConfirmSSNInput.fill(ssn);
       console.log("email, ssn filled");
       try {

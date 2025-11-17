@@ -38,6 +38,7 @@ class EmploymentPage {
       await this.AddNewEmplymntfield.click();
       await this.page.waitForTimeout(3000);
       await this.Emp_EmployerName.waitFor({ state: "visible", timeout: 10000 });
+      await this.Emp_EmployerName.click();
       await this.Emp_EmployerName.fill("ABC Corp");
       await this.Emp_JobTitle.fill("Software Engineer");
       await this.Emp_Address.fill("456 Corporate Blvd");
@@ -106,7 +107,8 @@ class EmploymentPage {
       await this.page.waitForTimeout(2000);
       await this.Emp_Zip.fill("10001");
       await this.Emp_SupervisorName.fill("John Doe");
-       await this.page.waitForTimeout(1000);
+      await this.Emp_SupervisorPhone.click();
+      await this.page.waitForTimeout(1000);
       await this.Emp_SupervisorPhone.fill("555-123-4567");
       await this.Emp_SupervisorMail.fill("john@gmail.com");
       await this.Emp_ReasonforLeaving.fill("Career Advancement");

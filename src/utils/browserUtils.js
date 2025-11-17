@@ -4,7 +4,7 @@ async function launchBrowser(headed = false) {
   const browser = await playwright.chromium.launch({
     headless: !headed,
     channel: "chrome",
-    args: ["--start-maximized","--incognito"],
+    args: ["--start-maximized"],
     timeout: 30000
   });
   const context = await browser.newContext({

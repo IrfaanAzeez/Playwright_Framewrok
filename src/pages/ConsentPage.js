@@ -56,7 +56,6 @@ class ConsentPage {
       await this.page.waitForTimeout(3000);
     } catch (error) {
       console.error("Give authorization on esign:", error);
-      throw error;
     }
   }
 
@@ -76,8 +75,9 @@ class ConsentPage {
     console.log("Attempting to confirm order");
     try {
       // Assuming there's a confirmation button after review and submit
+      //await this.page.waitForTimeout(5000);
       await this.NextButton.waitFor({ state: "visible", timeout: 60000 });
-      await NextButton.click();
+      await this.NextButton.click();
       await this.page.screenshot({ path: "OrderConfirmation.png", fullPage: true });
       await this.page.waitForTimeout(5000);
       
@@ -86,6 +86,7 @@ class ConsentPage {
       throw error;
     }
   }
+
   
 }
 

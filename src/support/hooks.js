@@ -1,20 +1,22 @@
-const { Before, After, setDefaultTimeout  } = require('@cucumber/cucumber');
+const { Before, After, setDefaultTimeout } = require('@cucumber/cucumber');
 const fs = require('fs');
 const path = require('path');
 
-setDefaultTimeout(60 * 1000); // 60 seconds
+setDefaultTimeout(60 * 1000);
 const now = new Date();
 const timestamp = now.toISOString().replace(/[:.]/g, '-');
 
 Before(async function (scenario) {
-  // scenarioName & scenarioDir
   this.scenarioName = scenario.pickle.name.replace(/[^a-z0-9]/gi, '_');
   this.scenarioDir = path.join('C:\\Reports', `${this.scenarioName}_${timestamp}`);
-  fs.mkdirSync(path.join(this.scenarioDir, 'allure-results'), { recursive: true });
+
+  // ✅ Create local folders for screenshots only
   fs.mkdirSync(path.join(this.scenarioDir, 'screenshots'), { recursive: true });
 
-  // init browser/page via World method
-  await this.init(); 
+  // ✅ Ensure Allure global results dir exists
+  fs.mkdirSync(path.join('C:\\Reports', 'allure-results'), { recursive: true });
+
+  await this.init();
 });
 
 After(async function (scenario) {
@@ -26,4 +28,3 @@ After(async function (scenario) {
 
   await this.closeBrowser();
 });
-

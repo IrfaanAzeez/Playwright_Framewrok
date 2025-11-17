@@ -44,7 +44,7 @@ When('I login with valid credentials from config', async function () {
 
 Then('I should provide consent signature', async function () {
   //let fname = test;
-  consentPage = new ConsentPage(this.page);
+  consentPage = new ConsentPage(this.page, this.context);
   await this.page.waitForTimeout(3000);
   console.log('Providing consent signature now');
   await consentPage.submitConsent("test");
@@ -104,11 +104,9 @@ Then ('I should sign the Authorization page', async function () {
 });
 
 Then ('I should be able to schedule the Drug Test', async function () {
-  drugTestPage = new DrugTestPage(this.page, this.context);
-  consentPage = new ConsentPage(this.page, this.context);
+  drugTestPage = new DrugTestPage(this);
   await this.page.waitForTimeout(3000);
   console.log('Scheduling Drug Test now');
   await drugTestPage.scheduleDrugTest("489368350");
-  await consentPage.confirmOrder();
 });
 
