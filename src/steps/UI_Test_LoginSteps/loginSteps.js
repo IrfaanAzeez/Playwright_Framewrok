@@ -1,13 +1,13 @@
 const { Given, When, Then,} = require('@cucumber/cucumber');
-const { LoginPage } = require('../pages/LoginPage');
-const { dev: config } = require('../../config/environment.json');
-const { ConsentPage } = require('../pages/ConsentPage');
-const { ResidencePage } = require('../pages/ResidencePage');
-const { EmploymentPage } = require('../pages/EmploymentPage');
-const { EducationPage } = require('../pages/EducationPage');
-const { LicencePage } = require('../pages/LicencePage');
-const {PersonalPage} = require('../pages/PersonalPage');
-const { DrugTestPage } = require('../pages/DrugTestPage');
+const { LoginPage } = require('../../pages/LoginPage.js');
+const { dev: config } = require('../../../config/environment.json');
+const { ConsentPage } = require('../../pages/ConsentPage.js');
+const { ResidencePage } = require('../../pages/ResidencePage.js');
+const { EmploymentPage } = require('../../pages/EmploymentPage.js');
+const { EducationPage } = require('../../pages/EducationPage.js');
+const { LicencePage } = require('../../pages/LicencePage.js');
+const {PersonalPage} = require('../../pages/PersonalPage.js');
+const { DrugTestPage } = require('../../pages/DrugTestPage.js');
 
 let loginPage;
 let consentPage;

@@ -3,6 +3,10 @@
     "baseUrl": "https://staging.precheck.com/User/UserRegistration",
     "username": "testtest99@gmail.com",
     "password": "Precheck2025",
+    "apiURL": "https://dummyjson.com",
+    "authURL": "https://your-auth-service.com/api/auth/login",
+    "clientId": "your_client_id_here",
+    "clientSecret": "your_client_secret_here",
     "db": {
       "host": "localhost",
       "port": 3306,
